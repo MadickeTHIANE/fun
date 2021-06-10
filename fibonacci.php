@@ -1,4 +1,5 @@
 <?php
+//* App suite de fibonacci
 function fib(int $x): int
 {
         if ($x == 0) {
