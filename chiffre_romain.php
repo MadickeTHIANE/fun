@@ -28,35 +28,37 @@ function conv($x)
         return $chiffreRomain;
 }
 
-(string) $erreur="";
-if(isset($_POST['chiffre'])){
+(string) $erreur = "";
+if (isset($_POST['chiffre'])) {
         $chiffre = $_POST['chiffre'];
-if($chiffre>8999 || $chiffre<1){
-        $erreur.="Veuillez rentrer un chiffre compris entre 1 et 8999.";
-}elseif(!is_int($chiffre)){
-        $erreur.="Veuillez rentrer un nombre entier.";
-}else{
-        echo "Le chiffre $chiffre s'écrit ainsi ". conv($chiffre) ." en chiffre romain";
-}
+        if ($chiffre > 8999 || $chiffre < 1) {
+                $erreur .= "Veuillez rentrer un chiffre compris entre 1 et 8999.";
+        } elseif (!is_int($chiffre)) {
+                $erreur .= "Veuillez rentrer un nombre entier.";
+        } else {
+                echo "Le chiffre $chiffre s'écrit ainsi " . conv($chiffre) . " en chiffre romain";
+        }
 }
 echo $erreur;
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Conversion en chiffre Romain</title>
 </head>
-<body>
-<div>
-        <form action="#" method="POST">
-        <label for="chiffre">Veuillez rentrer un chiffre arabe compris entre 1 et 8999 : <input type="text" id="chiffre" name="chiffre"></label>
-        <input type="submit" value="Convertir">
-        </form>
-</div>
-</body>
-</html>
 
+<body>
+        <div>
+                <form action="#" method="POST">
+                        <label for="chiffre">Veuillez rentrer un chiffre arabe compris entre 1 et 8999 : <input type="text" id="chiffre" name="chiffre"></label>
+                        <input type="submit" value="Convertir">
+                </form>
+        </div>
+</body>
+
+</html>
