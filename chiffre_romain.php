@@ -8,9 +8,9 @@ L => 50
 C => 100
 M => 1000
 */
-function conv(int $x)
+function conv($x)
 {
-        $chiffreRomain = "";
+        $chiffreRomain = "hello";
         $correspondances = [["M", 1000], ["CM", 900], ["D", 500], ["CD", 400], ["C", 100], ["XC", 90], ["L", 50], ["XL", 40], ["X", 10], ["V", 5], ["IV", 4], ["I", 1]];
 
         function extraireChiffreRomain($lettre, $valeurLettre)
@@ -19,23 +19,27 @@ function conv(int $x)
                 while ($x >= $valeurLettre) {
                         $x -= $valeurLettre;
                         $chiffreRomain += $lettre;
+                        var_dump($chiffreRomain);
                 }
         }
         foreach ($correspondances as $correspondance) {
                 extraireChiffreRomain($correspondance[0], $correspondance[1]);
         }
+        return $chiffreRomain;
 }
 
-$erreur="";
-if(isset($_POST['chiffre']){
+(string) $erreur="";
+if(isset($_POST['chiffre'])){
         $chiffre = $_POST['chiffre'];
 if($chiffre>8999 || $chiffre<1){
-        $erreur+="Veuillez rentrer un chiffre compris entre 1 et 8999.";
-}elseif(is_int($chiffre)){
-        $erreur+="Veuillez rentrer un nombre entier.";
+        $erreur.="Veuillez rentrer un chiffre compris entre 1 et 8999.";
+}elseif(!is_int($chiffre)){
+        $erreur.="Veuillez rentrer un nombre entier.";
+}else{
+        echo "Le chiffre $chiffre s'écrit ainsi ". conv($chiffre) ." en chiffre romain";
 }
 }
-
+echo $erreur;
 
 ?>
 <!DOCTYPE html>
@@ -50,6 +54,7 @@ if($chiffre>8999 || $chiffre<1){
 <div>
         <form action="#" method="POST">
         <label for="chiffre">Veuillez rentrer un chiffre arabe compris entre 1 et 8999 : <input type="text" id="chiffre" name="chiffre"></label>
+        <input type="submit" value="Convertir">
         </form>
 </div>
 </body>
